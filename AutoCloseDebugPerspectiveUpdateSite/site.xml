@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Panther Plugins">
+      Panther Plugins
+   </description>
+   <feature url="features/org.eclipseplugins.autoclosedebugperspective_1.0.0.201812290153.jar" id="org.eclipseplugins.autoclosedebugperspective" version="1.0.0.201812290153">
+      <category name="Convenience"/>
+   </feature>
+   <category-def name="Convenience" label="Convenience"/>
+</site>

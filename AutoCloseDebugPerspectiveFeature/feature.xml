@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipseplugins.autoclosedebugperspective"
+      label="AutoCloseDebugPerspective"
+      version="1.0.0.qualifier">
+
+   <description>
+      Switches back to previous perspective when debugging ends.
+   </description>
+
+   <license url="">
+      MIT
+   </license>
+
+   <plugin
+         id="org.eclipseplugins.autoclosedebugperspective"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
