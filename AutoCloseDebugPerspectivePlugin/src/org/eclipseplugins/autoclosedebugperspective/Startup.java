@@ -15,13 +15,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.debug.core.DebugPlugin;
-import org.eclipse.e4.ui.di.UISynchronize;
-
-// TODOs 
-// what if started in debug perspective? configurable default perspective?
-// testing
-// package
-// eclipse marketplace
 
 public class Startup implements IStartup {
 
@@ -43,7 +36,6 @@ public class Startup implements IStartup {
 			workbench.getDisplay().asyncExec(new Runnable() {
 				public void run() {
 					try {
-//						savePluginSettings();
 						PluginSettings settings = loadPluginSettings();
 						IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 						if (window != null) {
@@ -51,11 +43,10 @@ public class Startup implements IStartup {
 							IPerspectiveDescriptor currentPerspective = activePage.getPerspective();
 							PerspectiveTracker perspectiveTracker = new PerspectiveTracker(log, currentPerspective);
 							window.addPerspectiveListener(perspectiveTracker);
-							
-							UISynchronize ui = (UISynchronize) workbench.getService(UISynchronize.class);
+						
 							Consumer<IPerspectiveDescriptor> perspectiveSetter = (p) -> {
 								// re-get active objects, because i don't know if they could have changed
-								ui.asyncExec(() -> {
+								workbench.getDisplay().asyncExec(() -> {
 									try {
 										workbench.getActiveWorkbenchWindow().getActivePage().setPerspective(p);
 									} catch (Exception e) {
