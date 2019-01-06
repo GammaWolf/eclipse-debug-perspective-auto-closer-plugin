@@ -5,5 +5,19 @@
          point="org.eclipse.ui.startup">
          <startup class="org.eclipseplugins.autoclosedebugperspective.Startup"/>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipseplugins.autoclosedebugperspective.preferences.PreferencePage"
+            id="org.eclipseplugins.autoclosedebugperspective.preferences.PreferencePage"
+            name="Auto Close Debug Perspective">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipseplugins.autoclosedebugperspective.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

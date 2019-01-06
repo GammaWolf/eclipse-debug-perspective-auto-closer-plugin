@@ -1,27 +1,19 @@
 package org.eclipseplugins.autoclosedebugperspective;
 
-enum PerspectiveSwitchMode {
-	Previous, PreviousWithFallback, Fallback
+enum PerspectiveSwitchTrigger {
+	OnAllLaunchesTerminated, OnAnyLaunchTerminated
 }
 
 class PluginSettings {
 
-	private String fallbackPerspectiveId = "";
-	private PerspectiveSwitchMode perspectiveSwitchMode = PerspectiveSwitchMode.Previous;
+	private PerspectiveSwitchTrigger perspectiveSwitchTrigger = PerspectiveSwitchTrigger.OnAllLaunchesTerminated;
 
-	public PerspectiveSwitchMode getPerspectiveSwitchMode() {
-		return perspectiveSwitchMode;
+	public PerspectiveSwitchTrigger getPerspectiveSwitchTrigger() {
+		return perspectiveSwitchTrigger;
 	}
 
-	public void setPerspectiveSwitchMode(PerspectiveSwitchMode perspectiveSwitchMode) {
-		this.perspectiveSwitchMode = perspectiveSwitchMode;
+	public void setPerspectiveSwitchTrigger(PerspectiveSwitchTrigger perspectiveSwitchMode) {
+		this.perspectiveSwitchTrigger = perspectiveSwitchMode;
 	}
 
-	public String getFallbackPerspectiveId() {
-		return fallbackPerspectiveId;
-	}
-
-	public void setFallbackPerspectiveId(String fallbackPerspectiveId) {
-		this.fallbackPerspectiveId = fallbackPerspectiveId;
-	}
 }

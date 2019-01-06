@@ -2,20 +2,13 @@ package org.eclipseplugins.autoclosedebugperspective;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Objects;
+
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunch;
-import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.ILaunchesListener2;
 import org.eclipse.ui.IPerspectiveDescriptor;
-
-class LaunchUtil {
-	public static boolean isDebugLaunch(ILaunch launch) {
-		return launch != null && Objects.equals(launch.getLaunchMode(), ILaunchManager.DEBUG_MODE);
-	}
-}
 
 class DebugPerspectiveCloserOnAnyTermination implements ILaunchesListener2 {
 
