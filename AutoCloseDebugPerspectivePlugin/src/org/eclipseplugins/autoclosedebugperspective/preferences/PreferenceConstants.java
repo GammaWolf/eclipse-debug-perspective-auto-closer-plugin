@@ -9,7 +9,7 @@ public class PreferenceConstants {
 //
 //	public static final String P_BOOLEAN = "booleanPreference";
 
-	public static final String PERSPECTIVE_SWITCH_TRIGGER_CHOICE = "choicePreference";
+	public static final String PERSPECTIVE_SWITCH_TRIGGER_CHOICE = "perspectiveSwitchTriggerChoice";
 
 //	public static final String P_STRING = "stringPreference";
 	
