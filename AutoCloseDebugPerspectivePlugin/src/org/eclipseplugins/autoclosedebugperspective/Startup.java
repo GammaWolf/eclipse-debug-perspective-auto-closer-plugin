@@ -63,9 +63,9 @@ public class Startup implements IStartup {
 	private PerspectiveSwitchTrigger determinePerspectiveSwitchTrigger(IPreferenceStore prefStore) {
 		int i = prefStore.getInt(PreferenceConstants.PERSPECTIVE_SWITCH_TRIGGER_CHOICE);
 		return intToOptionalEnum(PerspectiveSwitchTrigger.class, i).orElseGet(() -> {
-			return intToOptionalEnum(PerspectiveSwitchTrigger.class,
-					prefStore.getDefaultInt(PreferenceConstants.PERSPECTIVE_SWITCH_TRIGGER_CHOICE))
-							.orElse(PerspectiveSwitchTrigger.OnAllLaunchesTerminated);
+			int defaultIndex = prefStore.getDefaultInt(PreferenceConstants.PERSPECTIVE_SWITCH_TRIGGER_CHOICE);
+			return intToOptionalEnum(PerspectiveSwitchTrigger.class, defaultIndex)
+					.orElse(PerspectiveSwitchTrigger.OnAllLaunchesTerminated);
 		});
 	}
 
