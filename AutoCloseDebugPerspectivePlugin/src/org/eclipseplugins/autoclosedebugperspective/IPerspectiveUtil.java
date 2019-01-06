@@ -1,7 +1,6 @@
 package org.eclipseplugins.autoclosedebugperspective;
 
 import org.eclipse.ui.IPerspectiveDescriptor;
-import org.eclipse.ui.IWorkbench;
 
 interface IPerspectiveUtil {
 	IPerspectiveDescriptor getCurrentPerspective();

@@ -1,12 +1,8 @@
 package org.eclipseplugins.autoclosedebugperspective;
 
-import java.util.Optional;
-
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.ILaunchesListener2;
@@ -62,21 +58,11 @@ public class Startup implements IStartup {
 
 	private PerspectiveSwitchTrigger determinePerspectiveSwitchTrigger(IPreferenceStore prefStore) {
 		int i = prefStore.getInt(PreferenceConstants.PERSPECTIVE_SWITCH_TRIGGER_CHOICE);
-		return intToOptionalEnum(PerspectiveSwitchTrigger.class, i).orElseGet(() -> {
+		return EnumUtil.intToOptionalEnum(PerspectiveSwitchTrigger.class, i).orElseGet(() -> {
 			int defaultIndex = prefStore.getDefaultInt(PreferenceConstants.PERSPECTIVE_SWITCH_TRIGGER_CHOICE);
-			return intToOptionalEnum(PerspectiveSwitchTrigger.class, defaultIndex)
+			return EnumUtil.intToOptionalEnum(PerspectiveSwitchTrigger.class, defaultIndex)
 					.orElse(PerspectiveSwitchTrigger.OnAllLaunchesTerminated);
 		});
-	}
-
-	private <T extends Enum<T>> Optional<T> intToOptionalEnum(Class<T> enumClass, int i) {
-		if (i < 0)
-			return Optional.empty();
-		T[] enumConstants = enumClass.getEnumConstants();
-		if (i > enumConstants.length - 1)
-			return Optional.empty();
-		else
-			return Optional.of(enumConstants[i]);
 	}
 
 }
