@@ -8,7 +8,7 @@ public class EnumUtil {
 			return Optional.empty();
 		
 		T[] enumConstants = enumClass.getEnumConstants();
-		if (i > enumConstants.length - 1)
+		if (i >= enumConstants.length)
 			return Optional.empty();
 		else
 			return Optional.of(enumConstants[i]);

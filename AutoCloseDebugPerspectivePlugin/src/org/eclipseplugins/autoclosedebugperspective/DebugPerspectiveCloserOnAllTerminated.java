@@ -13,21 +13,21 @@ import org.eclipse.ui.IPerspectiveDescriptor;
 
 public class DebugPerspectiveCloserOnAllTerminated implements ILaunchesListener2 {
 
-	private ILaunchManager lm;
+	private ILaunchManager launchManager;
 	private ILog log;
 	private IPerspectiveUtil perspectiveUtil;
 	private Optional<IPerspectiveDescriptor> perspectiveOnFirstLaunch = Optional.empty();
 
-	public DebugPerspectiveCloserOnAllTerminated(ILaunchManager lm, IPerspectiveUtil perspectiveUtil, ILog log) {
+	public DebugPerspectiveCloserOnAllTerminated(ILaunchManager launchManager, IPerspectiveUtil perspectiveUtil, ILog log) {
 		super();
-		this.lm = lm;
+		this.launchManager = launchManager;
 		this.perspectiveUtil = perspectiveUtil;
 		this.log = log;
 	}
 
 	@Override
 	public void launchesAdded(ILaunch[] launchesAdded) {
-		ILaunch[] launches = lm.getLaunches();
+		ILaunch[] launches = launchManager.getLaunches();
 		long nonTerminatedLaunchesCount = Arrays.stream(launches).filter(l -> !l.isTerminated()).count();
 		long nonTerminatedAddedLaunchesCount = Arrays.stream(launchesAdded).filter(l -> !l.isTerminated()).count();
 		if (nonTerminatedLaunchesCount == nonTerminatedAddedLaunchesCount) {
@@ -43,7 +43,7 @@ public class DebugPerspectiveCloserOnAllTerminated implements ILaunchesListener2
 
 	@Override
 	public void launchesTerminated(ILaunch[] launchesTerminated) {
-		ILaunch[] launches = lm.getLaunches();
+		ILaunch[] launches = launchManager.getLaunches();
 		if (Arrays.stream(launches).allMatch(l -> l.isTerminated())) {
 			perspectiveOnFirstLaunch.ifPresent(p -> {
 				if (!perspectiveUtil.isDebugPerspective(p)) {
