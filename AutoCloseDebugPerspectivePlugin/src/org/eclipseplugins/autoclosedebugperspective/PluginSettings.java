@@ -15,5 +15,10 @@ class PluginSettings {
 	public void setPerspectiveSwitchTrigger(PerspectiveSwitchTrigger perspectiveSwitchMode) {
 		this.perspectiveSwitchTrigger = perspectiveSwitchMode;
 	}
+	
+	@Override
+	public String toString() {
+		return "PluginSettings [perspectiveSwitchTrigger=" + perspectiveSwitchTrigger + "]";
+	}
 
 }

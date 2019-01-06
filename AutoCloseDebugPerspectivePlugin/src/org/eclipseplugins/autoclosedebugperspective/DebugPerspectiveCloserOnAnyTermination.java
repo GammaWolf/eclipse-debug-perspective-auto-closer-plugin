@@ -37,7 +37,11 @@ class DebugPerspectiveCloserOnAnyTermination implements ILaunchesListener2 {
 
 	@Override
 	public void launchesRemoved(ILaunch[] launches) {
-		removeDebugLaunchesFromStore(launches);
+		try {
+			removeDebugLaunchesFromStore(launches);
+		} catch (Exception e) {
+			log.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "", e));
+		}
 	}
 
 	private void removeDebugLaunchesFromStore(ILaunch[] launches) {
@@ -46,28 +50,32 @@ class DebugPerspectiveCloserOnAnyTermination implements ILaunchesListener2 {
 
 	@Override
 	public void launchesTerminated(ILaunch[] launches) {
-		log.log(new Status(IStatus.OK, Activator.PLUGIN_ID, "launchesTerminated"));
+		try {
+			log.log(new Status(IStatus.OK, Activator.PLUGIN_ID, "launchesTerminated"));
 
-		// change the perspective if the current perspective is the Debug perspective
-		IPerspectiveDescriptor currentPerspective = perspectiveUtil.getCurrentPerspective();
-		if (!perspectiveUtil.isDebugPerspective(currentPerspective))
-			return;
+			// change the perspective if the current perspective is the Debug perspective
+			IPerspectiveDescriptor currentPerspective = perspectiveUtil.getCurrentPerspective();
+			if (!perspectiveUtil.isDebugPerspective(currentPerspective))
+				return;
 
-		for (int i = launches.length - 1; i >= 0; i--) {
-			ILaunch launch = launches[i];
+			for (int i = launches.length - 1; i >= 0; i--) {
+				ILaunch launch = launches[i];
 
-			if (LaunchUtil.isDebugLaunch(launch)) {
-				IPerspectiveDescriptor perspectiveOnLaunchStart = perspectivesAtLaunch.getOrDefault(launch, null);
-				if (!perspectiveUtil.isDebugPerspective(perspectiveOnLaunchStart)) {
-					perspectiveUtil.setPerspective(perspectiveOnLaunchStart);
-					log.log(new Status(IStatus.OK, Activator.PLUGIN_ID,
-							"switched to perspective " + perspectiveOnLaunchStart));
-					break;
+				if (LaunchUtil.isDebugLaunch(launch)) {
+					IPerspectiveDescriptor perspectiveOnLaunchStart = perspectivesAtLaunch.getOrDefault(launch, null);
+					if (!perspectiveUtil.isDebugPerspective(perspectiveOnLaunchStart)) {
+						perspectiveUtil.setPerspective(perspectiveOnLaunchStart);
+						log.log(new Status(IStatus.OK, Activator.PLUGIN_ID,
+								"switched to perspective " + perspectiveOnLaunchStart));
+						break;
+					}
 				}
 			}
-		}
 
-		removeDebugLaunchesFromStore(launches);
+			removeDebugLaunchesFromStore(launches);
+		} catch (Exception e) {
+			log.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "", e));
+		}
 	}
 
 }

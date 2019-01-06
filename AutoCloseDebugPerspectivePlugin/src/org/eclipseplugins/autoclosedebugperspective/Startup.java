@@ -24,12 +24,13 @@ public class Startup implements IStartup {
 			log.log(new Status(IStatus.INFO, Activator.PLUGIN_ID, "initializing plugin: " + Activator.PLUGIN_ID));
 
 			DebugPlugin debugPlugin = DebugPlugin.getDefault();
-			final IWorkbench workbench = PlatformUI.getWorkbench();
+			IWorkbench workbench = PlatformUI.getWorkbench();
 			ILaunchManager launchmanager = debugPlugin.getLaunchManager();
 			IPerspectiveUtil perspectiveUtil = new PerspectiveUtil(workbench, log);
 
 			ILaunchesListener2 launchesListener = null;
 			PluginSettings settings = loadPluginSettings();
+			log.log(new Status(IStatus.INFO, Activator.PLUGIN_ID, "loaded settings " + settings));
 			switch (settings.getPerspectiveSwitchTrigger()) {
 			case OnAnyLaunchTerminated:
 				launchesListener = new DebugPerspectiveCloserOnAnyTermination(perspectiveUtil, log);
