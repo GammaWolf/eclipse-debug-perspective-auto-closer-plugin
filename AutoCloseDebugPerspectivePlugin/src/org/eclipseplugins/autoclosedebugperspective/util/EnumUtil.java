@@ -1,4 +1,4 @@
-package org.eclipseplugins.autoclosedebugperspective;
+package org.eclipseplugins.autoclosedebugperspective.util;
 
 import java.util.Optional;
 

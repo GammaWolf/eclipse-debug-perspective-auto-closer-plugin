@@ -15,6 +15,9 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipseplugins.autoclosedebugperspective.preferences.PreferenceConstants;
+import org.eclipseplugins.autoclosedebugperspective.util.EnumUtil;
+import org.eclipseplugins.autoclosedebugperspective.util.IPerspectiveUtil;
+import org.eclipseplugins.autoclosedebugperspective.util.PerspectiveUtil;
 
 public class Startup implements IStartup {
 

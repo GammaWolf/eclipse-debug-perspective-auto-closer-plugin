@@ -1,8 +1,8 @@
-package org.eclipseplugins.autoclosedebugperspective;
+package org.eclipseplugins.autoclosedebugperspective.util;
 
 import org.eclipse.ui.IPerspectiveDescriptor;
 
-interface IPerspectiveUtil {
+public interface IPerspectiveUtil {
 	IPerspectiveDescriptor getCurrentPerspective();
 	boolean isDebugPerspective(IPerspectiveDescriptor p);
 	void setPerspective(IPerspectiveDescriptor p);

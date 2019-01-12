@@ -1,4 +1,4 @@
-package org.eclipseplugins.autoclosedebugperspective;
+package org.eclipseplugins.autoclosedebugperspective.util;
 
 import java.util.concurrent.FutureTask;
 
@@ -6,8 +6,9 @@ import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IWorkbench;
+import org.eclipseplugins.autoclosedebugperspective.Activator;
 
-class PerspectiveUtil implements IPerspectiveUtil {
+public class PerspectiveUtil implements IPerspectiveUtil {
 	private static final String idOfDebugPerspective = "org.eclipse.debug.ui.DebugPerspective";
 	private IWorkbench workbench;
 	private ILog log;

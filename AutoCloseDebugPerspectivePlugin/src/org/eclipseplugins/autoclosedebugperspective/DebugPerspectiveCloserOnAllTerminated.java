@@ -10,6 +10,7 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.ILaunchesListener2;
 import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipseplugins.autoclosedebugperspective.util.IPerspectiveUtil;
 
 public class DebugPerspectiveCloserOnAllTerminated implements ILaunchesListener2 {
 
