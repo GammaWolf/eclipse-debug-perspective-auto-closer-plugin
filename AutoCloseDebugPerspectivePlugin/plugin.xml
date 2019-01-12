@@ -10,7 +10,7 @@
       <page
             class="org.eclipseplugins.autoclosedebugperspective.preferences.PreferencePage"
             id="org.eclipseplugins.autoclosedebugperspective.preferences.PreferencePage"
-            name="Auto Close Debug Perspective">
+            name="Debug Perspective Auto Closer">
       </page>
    </extension>
    <extension

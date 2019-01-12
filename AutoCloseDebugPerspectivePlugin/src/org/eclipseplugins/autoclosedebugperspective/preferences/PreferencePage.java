@@ -48,8 +48,8 @@ public class PreferencePage
 				PreferenceConstants.PERSPECTIVE_SWITCH_TRIGGER_CHOICE,
 			"Change perspective when",
 			1,
-			new String[][] { { "all launches have terminated ", "0" }, {
-				"any launch has terminated", "1" }
+			new String[][] { { "all debug launches have terminated (to perspective active on first launch)", "0" }, {
+				"any debug launch has terminated (to perspective active on that launch)", "1" }
 		}, getFieldEditorParent()));
 //		addField(
 //			new StringFieldEditor(PreferenceConstants.P_STRING, "A &text preference:", getFieldEditorParent()));
