@@ -2,7 +2,7 @@
 <feature
       id="org.eclipseplugins.autoclosedebugperspective"
       label="AutoCloseDebugPerspective"
-      version="1.0.3.qualifier">
+      version="1.0.4.qualifier">
 
    <description>
       Switches back to previous perspective when debugging ends.

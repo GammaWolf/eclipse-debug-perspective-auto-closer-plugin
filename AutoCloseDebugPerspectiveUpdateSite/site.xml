@@ -3,7 +3,7 @@
    <description name="Panther Plugins">
       Panther Plugins
    </description>
-   <feature url="features/org.eclipseplugins.autoclosedebugperspective_1.0.3.201901121646.jar" id="org.eclipseplugins.autoclosedebugperspective" version="1.0.3.201901121646">
+   <feature url="features/org.eclipseplugins.autoclosedebugperspective_1.0.4.201901121736.jar" id="org.eclipseplugins.autoclosedebugperspective" version="1.0.4.201901121736">
       <category name="Convenience"/>
    </feature>
    <category-def name="Convenience" label="Convenience"/>
