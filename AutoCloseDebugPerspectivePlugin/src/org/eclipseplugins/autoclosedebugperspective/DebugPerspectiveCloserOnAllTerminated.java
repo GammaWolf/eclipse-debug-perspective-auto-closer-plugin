@@ -74,10 +74,16 @@ public class DebugPerspectiveCloserOnAllTerminated implements ILaunchesListener2
 			
 			if (haveAllDebugLaunchesTerminated) {
 				perspectiveOnFirstLaunch.ifPresent(p -> {
-					if (!perspectiveUtil.isDebugPerspective(p)) {
-						log.log(new Status(IStatus.OK, Activator.PLUGIN_ID, "setting perspective " + p));
-						perspectiveUtil.setPerspective(p);
+					// only change the perspective if the current perspective is the Debug perspective
+					if (perspectiveUtil.isDebugPerspective(perspectiveUtil.getCurrentPerspective())) {
+						// only change if we're not changing to debug perspective
+						if (!perspectiveUtil.isDebugPerspective(p)) {
+							log.log(new Status(IStatus.OK, Activator.PLUGIN_ID, "setting perspective " + p));
+							perspectiveUtil.setPerspective(p);
+						}
 					}
+					
+					// reset
 					perspectiveOnFirstLaunch = Optional.empty();
 				});
 			} else {
